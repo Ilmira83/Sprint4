@@ -12,7 +12,6 @@ let randomJoke = document.getElementById('jokes');
 let weatherForecast = document.getElementById('weather');
 let anotherJokeButton = document.getElementById('anotherJoke');
 const reportJokes = [];
-let apiKey = '013779a50c93746dcb0df44be7e190a3';
 if (randomJoke && anotherJokeButton) {
     function randomDadJokes() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -62,7 +61,6 @@ function weatherFcst() {
                 throw new Error('Response was not received');
             }
             let data = yield currentWeather.json();
-            console.log(data);
             weatherForecast.innerHTML = data.main.temp;
         }
         catch (error) {
