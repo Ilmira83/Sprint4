@@ -1,0 +1,12 @@
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.background {
+  position: relative;  /* Блок с фоном */
+  background-image: url('img-bg.jpg');  /* Путь к картинке */
+  background-size: cover;  /* Покрывает весь блок */
+  background-position: center;  /* Центрирует изображение */
+  background-repeat: no-repeat;  /* Не повторять изображение */
+  height: 100vh;  /* Высота блока 100% от высоты окна браузера */
+}
+
