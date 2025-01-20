@@ -9,7 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 let randomJoke = document.getElementById('jokes');
+let weatherForecast = document.getElementById('weather');
 let anotherJokeButton = document.getElementById('anotherJoke');
+const reportJokes = [];
+let apiKey = '013779a50c93746dcb0df44be7e190a3';
 if (randomJoke && anotherJokeButton) {
     function randomDadJokes() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -33,7 +36,6 @@ if (randomJoke && anotherJokeButton) {
 else {
     console.error('Required elements not found');
 }
-const reportJokes = [];
 function rateJoke(id) {
     var _a;
     let currentJoke = (_a = document.getElementById('jokes')) === null || _a === void 0 ? void 0 : _a.innerText;
@@ -52,3 +54,21 @@ function rateJoke(id) {
     }
     console.log(reportJokes);
 }
+function weatherFcst() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let currentWeather = yield fetch('https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&appid=013779a50c93746dcb0df44be7e190a3', { headers: { 'Accept': 'application/json' } });
+            if (!currentWeather.ok) {
+                throw new Error('Response was not received');
+            }
+            let data = yield currentWeather.json();
+            console.log(data);
+            weatherForecast.innerHTML = data.main.temp;
+        }
+        catch (error) {
+            console.error('Error fetching weather:', error);
+            weatherForecast.innerHTML = 'Something went wrong.';
+        }
+    });
+}
+weatherFcst();
