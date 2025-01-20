@@ -12,6 +12,7 @@ let randomJoke = document.getElementById('jokes');
 let weatherForecast = document.getElementById('weather');
 let anotherJokeButton = document.getElementById('anotherJoke');
 const reportJokes = [];
+let checkJokeApi = true;
 if (randomJoke && anotherJokeButton) {
     function randomDadJokes() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -21,16 +22,44 @@ if (randomJoke && anotherJokeButton) {
                     throw new Error('Response was not received');
                 }
                 let data = yield response.json();
+                console.log(data);
                 randomJoke.innerHTML = data.joke;
             }
             catch (error) {
                 console.error('Error fetching joke:', error);
                 randomJoke.innerHTML = 'Something went wrong.';
             }
-            anotherJokeButton.addEventListener("click", randomDadJokes);
         });
     }
-    randomDadJokes();
+    function secondJokeApi() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let secondResponse = yield fetch('https://v2.jokeapi.dev/joke/Programming?type=single');
+                if (!secondResponse.ok)
+                    throw new Error('Response was not recieved');
+                const secondData = yield secondResponse.json();
+                console.log(`2API ${secondData}`);
+                randomJoke.innerHTML = secondData.joke;
+            }
+            catch (error) {
+                console.error('Error fetching joke:', error);
+                randomJoke.innerHTML = 'Something went wrong.';
+            }
+        });
+    }
+    function getNewJoke() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (checkJokeApi) {
+                yield randomDadJokes();
+            }
+            else {
+                yield secondJokeApi();
+            }
+            checkJokeApi = !checkJokeApi;
+        });
+    }
+    getNewJoke();
+    anotherJokeButton.addEventListener("click", getNewJoke);
 }
 else {
     console.error('Required elements not found');
