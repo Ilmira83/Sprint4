@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  
+<div class="container-fluid"> 
+   <!-- NavBar -->
+  <nav class="navbar navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand text-sm-center" >🌦️ 
+          <h6 id="weather" class="fs-6"></h6>
+        </a>
+    </div>
+  </nav>
+  
+  <div class="blob container-fluid col-sm-10 col-md-8 col-lg-6 justify-content-center"> 
+    <div class = "justify-content-center ">   
+      <h4 class="text-center fs-4 mt-3 mb-0">Ready to smile?🤣</h4>
+      <h4 id="jokes" class="text-center fs-6 mt-1"></h4> 
+    </div> 
+    <div class="d-flex justify-content-center"> 
+      <button type="button" class="btn fs-4" onclick="rateJoke(3)">😆</button>
+      <button type="button" class="btn fs-4" onclick="rateJoke(2)">😑</button> 
+      <button type="button" class="btn fs-4" onclick="rateJoke(1)">😢</button>
+    </div>
+    <div class="d-flex justify-content-center"> 
+      <button type="button" class="btn btn-primary mt-3" id="anotherJoke">Next joke</button>
+    </div> 
+  </div>
+ 
+</div>
+
+  <script src="ts-setup/dist/index.js"></script>
+</body>
+</html>
