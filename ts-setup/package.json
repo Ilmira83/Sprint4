@@ -22,5 +22,8 @@
   "homepage": "https://github.com/Ilmira83/Sprint4#readme",
   "devDependencies": {
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
   }
 }

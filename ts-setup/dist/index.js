@@ -22,7 +22,6 @@ if (randomJoke && anotherJokeButton) {
                     throw new Error('Response was not received');
                 }
                 let data = yield response.json();
-                console.log(data);
                 randomJoke.innerHTML = data.joke;
             }
             catch (error) {
@@ -38,7 +37,6 @@ if (randomJoke && anotherJokeButton) {
                 if (!secondResponse.ok)
                     throw new Error('Response was not recieved');
                 const secondData = yield secondResponse.json();
-                console.log(`2API ${secondData}`);
                 randomJoke.innerHTML = secondData.joke;
             }
             catch (error) {
@@ -90,7 +88,7 @@ function weatherFcst() {
                 throw new Error('Response was not received');
             }
             let data = yield currentWeather.json();
-            weatherForecast.innerHTML = data.main.temp;
+            weatherForecast.innerHTML = `${data.name} <br> ${data.main.temp}°C`;
         }
         catch (error) {
             console.error('Error fetching weather:', error);
